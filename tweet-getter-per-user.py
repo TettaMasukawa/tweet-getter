@@ -56,15 +56,7 @@ def connect_to_endpoint(bearer_token, user_id, next_token=None):
 # Bearer token
 BT = "AAAAAAAAAAAAAAAAAAAAAD%2FJPQEAAAAA7%2BNdrLam%2FkVdRcU3%2B6I5tA6I8Ic%3DljqTXJKdge7Uid3JlwgKsalU2xFBXlrq9Wzpe09xF2azv0rKvB"
 
-ID_LIST = {"wadainotweetRT":"721533585165946881",
-        "yaasaamaa":"4654974938",
-        "150000iRT":"811540354117738496",
-        "bot_rt2":"1238454791094677504",
-        "rt_wadainotweet":"1022067527495507968",
-        "_sogofollow_100":"1207912589616795648",
-        "tekitoRT":"3231551293",
-        "bazuttatweetRT":"1459827262178852865",
-        "pakurares":"538255041"}
+ID_LIST = {}
 
 t_delta = timedelta(hours=9)
 JST = timezone(t_delta, "JST")
