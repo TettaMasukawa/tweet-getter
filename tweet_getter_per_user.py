@@ -54,7 +54,7 @@ def connect_to_endpoint(bearer_token, user_id, next_token=None):
 
 
 # Bearer token
-BT = "AAAAAAAAAAAAAAAAAAAAAD%2FJPQEAAAAA7%2BNdrLam%2FkVdRcU3%2B6I5tA6I8Ic%3DljqTXJKdge7Uid3JlwgKsalU2xFBXlrq9Wzpe09xF2azv0rKvB"
+BT = ""
 
 ID_LIST = {}
 
