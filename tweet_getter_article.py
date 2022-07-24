@@ -1,27 +1,13 @@
-import datetime
 import os
-import sys
 import time
 
 import pandas as pd
 import requests
 
+from twitter_api_connect import waitUntilReset
+
 # Bearer token
 BT = "AAAAAAAAAAAAAAAAAAAAAD%2FJPQEAAAAA7%2BNdrLam%2FkVdRcU3%2B6I5tA6I8Ic%3DljqTXJKdge7Uid3JlwgKsalU2xFBXlrq9Wzpe09xF2azv0rKvB"
-
-
-def waitUntilReset(reset):
-    """
-    reset 時刻まで sleep
-    """
-    seconds = reset - time.mktime(datetime.detetime.now().timetuple())
-    seconds = max(seconds, 0)
-    print("\n     =====================")
-    print("     == waiting %d sec ==" % seconds)
-    print("     =====================")
-    sys.stdout.flush()
-    time.sleep(seconds + 30)  # 念のため + 10 秒
-
 
 def connect_to_endpoint(bearer_token, user_id, next_token=None):
     headers = {"Authorization": "Bearer {}".format(bearer_token)}

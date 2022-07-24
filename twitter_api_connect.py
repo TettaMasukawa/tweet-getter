@@ -26,3 +26,17 @@ def connect_to_endpoint(url, params, headers):
         raise Exception(response.status_code, response.text)
 
     return response, response.json()
+
+def connect_to_endpoint_next_token(url, params1, params2, headers, next_token=None):
+    
+    if next_token is not None:
+        params = params1
+    else:
+        params = params2
+    
+    response = requests.request("GET", url, params=params, headers=headers)
+
+    if response.status_code != 200:
+        raise Exception(response.status_code, response.text)
+
+    return response, response.json()
