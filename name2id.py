@@ -15,7 +15,7 @@ def get_id(BT, username):
     try:
         id = json_response["data"][0]["id"]
     except:
-        return False
+        return "NA"
 
     return id
 
