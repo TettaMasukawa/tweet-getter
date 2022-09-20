@@ -1,6 +1,5 @@
 # import json
 import os
-import sys
 import time
 from datetime import datetime, timedelta, timezone
 
@@ -24,8 +23,8 @@ def connect_to_endpoint(bearer_token, next_token=None):
             "user.fields": "description,created_at,public_metrics",
             "max_results": "10",
             "pagination_token": str(next_token),
-            "start_time": "2020-03-01T00:00:00Z",
-            "end_time": "2020-04-01T00:00:00Z",
+            "start_time": "2022-01-01T00:00:00Z",
+            "end_time": "2022-02-01T00:00:00Z",
         }
 
     else:
@@ -35,8 +34,8 @@ def connect_to_endpoint(bearer_token, next_token=None):
             "expansions": "author_id",
             "user.fields": "description,created_at,public_metrics",
             "max_results": "10",
-            "start_time": "2020-03-01T00:00:00Z",
-            "end_time": "2020-04-01T00:00:00Z",
+            "start_time": "2022-01-01T00:00:00Z",
+            "end_time": "2022-02-01T00:00:00Z",
         }
 
     response = requests.request("GET", url, params=params, headers=headers)
