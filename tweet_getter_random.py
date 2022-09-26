@@ -168,7 +168,7 @@ while flag:
         json_count += 1
 
         if int(response_.headers["x-rate-limit-remaining"]) == 0:
-            waitUntilReset(response_.headers["x-ratelimit-reset"])
+            waitUntilReset(response_.headers["x-rate-limit-reset"])
 
     try:
         result_count = json_response["meta"]["result_count"]

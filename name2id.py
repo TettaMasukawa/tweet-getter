@@ -31,4 +31,4 @@ if __name__ == "__main__":
         
     csv["id"] = id_list
     
-    csv.to_csv("", encoding="utf-8-sig", mode="w")
+    csv.to_csv("", encoding="utf-8-sig", mode="w", index=False)
