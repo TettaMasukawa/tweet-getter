@@ -153,7 +153,7 @@ for user, data in ID_LIST.items():
                 json_count += 1
 
                 if int(response_.headers["x-rate-limit-remaining"]) == 0:
-                    waitUntilReset(response_.headers["x-ratelimit-reset"])
+                    waitUntilReset(response_.headers["x-rate-limit-reset"])
                     
             except:
                 break

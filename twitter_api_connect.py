@@ -18,7 +18,8 @@ def waitUntilReset(reset):
     time.sleep(seconds + 30)
 
 
-def connect_to_endpoint(url, params, headers):
+def connect_to_endpoint(bearer_token, url, params):
+    headers = {"Authorization": "Bearer {}".format(bearer_token)}
 
     response = requests.request("GET", url, params=params, headers=headers)
 
@@ -27,7 +28,8 @@ def connect_to_endpoint(url, params, headers):
 
     return response, response.json()
 
-def connect_to_endpoint_next_token(url, params1, params2, headers, next_token=None):
+def connect_to_endpoint_next_token(bearer_token, url, params1, params2, next_token=None):
+    headers = {"Authorization": "Bearer {}".format(bearer_token)}
     
     if next_token is not None:
         params = params1

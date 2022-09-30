@@ -17,25 +17,25 @@ def connect_to_endpoint(bearer_token, next_token=None):
     # replace appropriate start and end times below
     if next_token is not None:
         params = {
-            "query": "-RT (あ OR い OR う OR え OR お OR か OR き OR く OR け OR こ OR さ OR し OR す OR せ OR そ OR た OR ち OR つ OR て OR と OR な OR に OR ぬ OR ね OR の OR は OR ひ OR ふ OR へ OR ほ OR ま OR み OR む OR め OR も OR や OR ゆ OR よ OR ら OR り OR る OR れ OR ろ OR わ OR を OR ん OR が OR ぎ OR ぐ OR げ OR ご OR ざ OR じ OR ず OR ぜ OR ぞ OR だ OR ぢ OR づ OR で OR ど OR ば OR び OR ぶ OR べ OR ぼ OR ぱ OR ぴ OR ぷ OR ぺ OR ぽ) -is:retweet -is:quote -has:mentions -has:media lang:ja",
+            "query": "-RT (あ OR い OR う OR え OR お OR か OR き OR く OR け OR こ OR さ OR し OR す OR せ OR そ OR た OR ち OR つ OR て OR と OR な OR に OR ぬ OR ね OR の OR は OR ひ OR ふ OR へ OR ほ OR ま OR み OR む OR め OR も OR や OR ゆ OR よ OR ら OR り OR る OR れ OR ろ OR わ OR を OR ん OR が OR ぎ OR ぐ OR げ OR ご OR ざ OR じ OR ず OR ぜ OR ぞ OR だ OR ぢ OR づ OR で OR ど OR ば OR び OR ぶ OR べ OR ぼ OR ぱ OR ぴ OR ぷ OR ぺ OR ぽ) -is:reply -is:nullcast -is:quote -has:mentions -has:media lang:ja",
             "tweet.fields": "author_id,created_at,public_metrics",
             "expansions": "author_id",
             "user.fields": "description,created_at,public_metrics",
-            "max_results": "10",
+            "max_results": "100",
             "pagination_token": str(next_token),
-            "start_time": "2022-01-01T00:00:00Z",
-            "end_time": "2022-02-01T00:00:00Z",
+            "start_time": "2021-01-01T00:00:00Z",
+            "end_time": "2022-01-01T00:00:00Z",
         }
 
     else:
         params = {
-            "query": "-RT (あ OR い OR う OR え OR お OR か OR き OR く OR け OR こ OR さ OR し OR す OR せ OR そ OR た OR ち OR つ OR て OR と OR な OR に OR ぬ OR ね OR の OR は OR ひ OR ふ OR へ OR ほ OR ま OR み OR む OR め OR も OR や OR ゆ OR よ OR ら OR り OR る OR れ OR ろ OR わ OR を OR ん OR が OR ぎ OR ぐ OR げ OR ご OR ざ OR じ OR ず OR ぜ OR ぞ OR だ OR ぢ OR づ OR で OR ど OR ば OR び OR ぶ OR べ OR ぼ OR ぱ OR ぴ OR ぷ OR ぺ OR ぽ) -is:retweet -is:quote -has:mentions -has:media lang:ja",
+            "query": "-RT (あ OR い OR う OR え OR お OR か OR き OR く OR け OR こ OR さ OR し OR す OR せ OR そ OR た OR ち OR つ OR て OR と OR な OR に OR ぬ OR ね OR の OR は OR ひ OR ふ OR へ OR ほ OR ま OR み OR む OR め OR も OR や OR ゆ OR よ OR ら OR り OR る OR れ OR ろ OR わ OR を OR ん OR が OR ぎ OR ぐ OR げ OR ご OR ざ OR じ OR ず OR ぜ OR ぞ OR だ OR ぢ OR づ OR で OR ど OR ば OR び OR ぶ OR べ OR ぼ OR ぱ OR ぴ OR ぷ OR ぺ OR ぽ) -is:reply -is:nullcast -is:quote -has:mentions -has:media lang:ja",
             "tweet.fields": "author_id,created_at,public_metrics",
             "expansions": "author_id",
             "user.fields": "description,created_at,public_metrics",
-            "max_results": "10",
-            "start_time": "2022-01-01T00:00:00Z",
-            "end_time": "2022-02-01T00:00:00Z",
+            "max_results": "100",
+            "start_time": "2021-01-01T00:00:00Z",
+            "end_time": "2022-01-01T00:00:00Z",
         }
 
     response = requests.request("GET", url, params=params, headers=headers)
@@ -54,7 +54,7 @@ os.makedirs(
 # Bearer token
 BT = "AAAAAAAAAAAAAAAAAAAAAD%2FJPQEAAAAA7%2BNdrLam%2FkVdRcU3%2B6I5tA6I8Ic%3DljqTXJKdge7Uid3JlwgKsalU2xFBXlrq9Wzpe09xF2azv0rKvB"
 
-LIMIT_COUNT = 10
+LIMIT_COUNT = 100000
 
 t_delta = timedelta(hours=9)
 JST = timezone(t_delta, "JST")
