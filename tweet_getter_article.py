@@ -7,7 +7,7 @@ import requests
 from twitter_api_connect import waitUntilReset
 
 # Bearer token
-BT = "AAAAAAAAAAAAAAAAAAAAAD%2FJPQEAAAAA7%2BNdrLam%2FkVdRcU3%2B6I5tA6I8Ic%3DljqTXJKdge7Uid3JlwgKsalU2xFBXlrq9Wzpe09xF2azv0rKvB"
+BT = ""
 
 def connect_to_endpoint(bearer_token, user_id, next_token=None):
     headers = {"Authorization": "Bearer {}".format(bearer_token)}
@@ -42,42 +42,7 @@ def connect_to_endpoint(bearer_token, user_id, next_token=None):
     return response, response.json()
 
 
-id_list = {
-    "c_hocknews": "905699646256721921",
-    "chuspo": "131455845",
-    "danketsu_rentai": "1083251991424323584",
-    "hamemen": "68571425",
-    "hiranok": "94513095",
-    "hirox": "3920121",
-    "hokuchu_komatsu": "1068110633495814144",
-    "ISOKO_MOCHIZUKI": "119363202",
-    "KadotaRyusho": "1128981340848656384",
-    "katsuyatakasu": "362401254",
-    "kenminfukui": "1210084732999876609",
-    "kimi_aya_": "4598644933",
-    "koseiHENTAIbot": "1056927836286574592",
-    "MagnoliaAliceF": "1084229219138252800",
-    "MatsumotohaJimu": "148659115",
-    "ogi_fuji_npo": "60241834",
-    "Narodovlastiye": "1161797133424455680",
-    "news_zoo": "243244921",
-    "NOSUKE": "35356894",
-    "ozawa_jimusho": "188620283",
-    "pioneertaku": "98793189",
-    "RibbonChieko": "2264718120",
-    "RyuichiYoneyama": "84782143",
-    "SatoMasahisa": "112551613",
-    "SaYoNaRaKiNo": "1128311464391991296",
-    "shima_keishi": "1263839615560978432",
-    "sibakendona": "313229089",
-    "skyteam": "42802981",
-    "ssimtok": "3140359753",
-    "takedasatetsu": "2758783248",
-    "TJO_datasci": "1320611023",
-    "tsuda": "4171231",
-    "yohei_tsushima": "36673871",
-    "yonecyoko": "163426680",
-}  # "screenname": "user_id"
+id_list = {}  # "screenname": "user_id"
 
 remove_user_list = []
 

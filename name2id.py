@@ -19,8 +19,8 @@ def get_id(BT, username):
     return int(id)
 
 if __name__ == "__main__":
-    BT = "AAAAAAAAAAAAAAAAAAAAAC%2FlQgEAAAAAi9yH0D1YnXy%2F4tKDFNd4Jw%2B9GyQ%3DukHqkVzZWJQX48nwMVys5VglneLIRW3CG566Z0ZY8SUCBkGPsa"
-    csv = pd.read_csv("/disk/ssd14tc/tmasukawa/tweet-analysis/data/crowdsourcing/wave_1/account.csv", encoding="utf-8-sig")
+    BT = ""
+    csv = pd.read_csv("", encoding="utf-8-sig")
     
     id_list = []
     
@@ -30,4 +30,7 @@ if __name__ == "__main__":
         
     csv["id"] = id_list
     
-    csv.to_csv("/disk/ssd14tc/tmasukawa/tweet-analysis/data/crowdsourcing/wave_1/account.csv", encoding="utf-8-sig", mode="w", index=False)
+    csv.to_csv("", encoding="utf-8-sig", mode="w", index=False)
+    
+    id = get_id(BT, "")
+    print(id)
