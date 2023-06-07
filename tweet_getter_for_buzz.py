@@ -1,7 +1,4 @@
 # import json
-import json
-import os
-import sys
 import time
 from datetime import datetime, timedelta, timezone
 
@@ -19,7 +16,7 @@ def connect_to_endpoint(bearer_token, user_id, next_token=None):
     # replace appropriate start and end times below
     if next_token is not None:
         params = {
-            "tweet.fields": "author_id,created_at,public_metrics",
+            "tweet.fields": "author_id,created_at,public_metrics,organic_metrics,promoted_metrics",
             "expansions": "referenced_tweets.id.author_id",
             "user.fields": "description,created_at,public_metrics",
             "max_results": "100",
@@ -45,53 +42,22 @@ def connect_to_endpoint(bearer_token, user_id, next_token=None):
 # Bearer token
 BT = ""
 
+# {username: id}
 ID_LIST = {}
 
 t_delta = timedelta(hours=9)
 JST = timezone(t_delta, "JST")
 now = datetime.now(JST)
 
-if (
-    os.path.exists(
-        "/home/tmasukawa/tweet-analysis/data/tweet-data-random/original/BuzzTweetData_{}.csv".format(
-            now.strftime("%Y-%m-%d")
-        )
-    )
-    is True
-):
-    os.remove(
-        "/home/tmasukawa/tweet-analysis/data/tweet-data-random/original/BuzzTweetData_{}.csv".format(
-            now.strftime("%Y-%m-%d")
-        )
-    )
-
-if (
-    os.path.exists(
-        "/home/tmasukawa/tweet-analysis/data/tweet-data-random/original/BuzzUserData_{}.csv".format(
-            now.strftime("%Y-%m-%d")
-        )
-    )
-    is True
-):
-    os.remove(
-        "/home/tmasukawa/tweet-analysis/data/tweet-data-random/original/BuzzUserData_{}.csv".format(
-            now.strftime("%Y-%m-%d")
-        )
-    )
-
-os.makedirs(
-    "/home/tmasukawa/tweet-analysis/data/tweet-data-random/original",
-    exist_ok=True,
-)
 
 count = 0
 json_response = ""
 
 for user_, id_ in ID_LIST.items():
-    
+
     flag = True
     json_count = 0
-    
+
     while flag:
         if json_count == 0:
             response_, json_response = connect_to_endpoint(BT, id_)
@@ -109,16 +75,6 @@ for user_, id_ in ID_LIST.items():
 
             time.sleep(3)
 
-            # with open(
-            #     "/home/tmasukawa/tweet-analysis/data/tweet-data-random/test_{}.json".format(
-            #         json_count
-            #     ),
-            #     "a",
-            #     encoding="utf-8-sig",
-            # ) as js:
-            #     json.dump(json_response, js, indent=4, sort_keys=True, ensure_ascii=False)
-            #     json_count += 1
-
             df = pd.json_normalize(json_response["includes"]["tweets"])
             df_re = df.reindex(
                 columns=[
@@ -129,11 +85,13 @@ for user_, id_ in ID_LIST.items():
                     "public_metrics.reply_count",
                     "public_metrics.like_count",
                     "public_metrics.quote_count",
+                    "public_metrics.bookmark_count",
+                    "public_metrics.impression_count",
                     "created_at",
                 ]
             )
             df_re.to_csv(
-                "/home/tmasukawa/tweet-analysis/data/tweet-data-random/original/BuzzTweetData_{}.csv".format(
+                "BuzzTweetData_{}.csv".format(
                     now.strftime("%Y-%m-%d")
                 ),
                 encoding="utf-8-sig",
@@ -156,7 +114,7 @@ for user_, id_ in ID_LIST.items():
                 ]
             )
             df_reindex2.to_csv(
-                "/home/tmasukawa/tweet-analysis/data/tweet-data-random/original/BuzzUserData_{}.csv".format(
+                "BuzzUserData_{}.csv".format(
                     now.strftime("%Y-%m-%d")
                 ),
                 encoding="utf-8-sig",
@@ -220,11 +178,13 @@ for user_, id_ in ID_LIST.items():
                         "public_metrics.reply_count",
                         "public_metrics.like_count",
                         "public_metrics.quote_count",
+                        "public_metrics.bookmark_count",
+                        "public_metrics.impression_count",
                         "created_at",
                     ]
                 )
                 df_reindex_next.to_csv(
-                    "/home/tmasukawa/tweet-analysis/data/tweet-data-random/original/BuzzTweetData_{}.csv".format(
+                    "BuzzTweetData_{}.csv".format(
                         now.strftime("%Y-%m-%d")
                     ),
                     encoding="utf-8-sig",
@@ -248,7 +208,7 @@ for user_, id_ in ID_LIST.items():
                     ]
                 )
                 df_reindex_next2.to_csv(
-                    "/home/tmasukawa/tweet-analysis/data/tweet-data-random/original/BuzzUserData_{}.csv".format(
+                    "BuzzUserData_{}.csv".format(
                         now.strftime("%Y-%m-%d")
                     ),
                     encoding="utf-8-sig",
