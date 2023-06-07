@@ -18,7 +18,7 @@ def connect_to_endpoint(bearer_token, screenname, next_token=None):
     if next_token is not None:
         params = {
             "query": "from:{} -is:retweet lang:ja".format(screenname),
-            "tweet.fields": "author_id,conversation_id,created_at,geo,id,in_reply_to_user_id,public_metrics,text",
+            "tweet.fields": "author_id,conversation_id,created_at,geo,id,in_reply_to_user_id,public_metrics,organic_metrics,promoted_metrics,text",
             "expansions": "referenced_tweets.id.author_id",
             "user.fields": "created_at,description,id,location,name,public_metrics,username",
             "max_results": "500",
@@ -30,7 +30,7 @@ def connect_to_endpoint(bearer_token, screenname, next_token=None):
     else:
         params = {
             "query": "from:{} -is:retweet lang:ja".format(screenname),
-            "tweet.fields": "author_id,conversation_id,created_at,geo,id,in_reply_to_user_id,public_metrics,text",
+            "tweet.fields": "author_id,conversation_id,created_at,geo,id,in_reply_to_user_id,public_metrics,organic_metrics,promoted_metrics,text",
             "expansions": "referenced_tweets.id.author_id",
             "user.fields": "created_at,description,id,location,name,public_metrics,username",
             "max_results": "500",
