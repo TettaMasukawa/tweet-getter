@@ -101,7 +101,7 @@ for username in user_list:
                     df = pd.json_normalize(json_response["data"])
                 else:
                     df = pd.json_normalize(json_response["includes"]["tweets"])
-                    
+
                 df_re = df.reindex(
                     columns=[
                         "id",
@@ -111,6 +111,8 @@ for username in user_list:
                         "public_metrics.reply_count",
                         "public_metrics.like_count",
                         "public_metrics.quote_count",
+                        "public_metrics.impression_count",
+                        "public_metrics.bookmark_count",
                         "created_at",
                         "conversation_id",
                         "in_reply_to_user_id",
@@ -201,6 +203,8 @@ for username in user_list:
                             "public_metrics.reply_count",
                             "public_metrics.like_count",
                             "public_metrics.quote_count",
+                            "public_metrics.impression_count",
+                            "public_metrics.bookmark_count",
                             "created_at",
                             "conversation_id",
                             "in_reply_to_user_id",
